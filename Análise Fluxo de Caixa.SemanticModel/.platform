@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Análise Fluxo de Caixa"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1894eec9-48b4-4e8f-bd6f-3d9dceb29e22"
+  }
+}

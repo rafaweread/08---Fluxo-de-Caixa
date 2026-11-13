@@ -1,0 +1,22 @@
+model Model
+	culture: pt-PT
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Fluxo de Caixa","Calendário","_Medidas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_15ba7aa7-168e-47c0-8fa9-9300d7088d0f
+ref table 'Fluxo de Caixa'
+ref table Calendário
+ref table LocalDateTable_a9a5781c-9776-46bd-b85e-da8b20fffaeb
+ref table _Medidas
+
+ref cultureInfo pt-PT
+

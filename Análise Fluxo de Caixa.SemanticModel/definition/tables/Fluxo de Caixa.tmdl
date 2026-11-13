@@ -1,0 +1,68 @@
+table 'Fluxo de Caixa'
+	lineageTag: f738205b-6777-4e5a-af36-b01509fa8dfb
+
+	measure 'Cálculo Saldo' = COALESCE([Soma Entradas]-[Soma Despesas],0)
+		formatString: #,0.0
+		lineageTag: 0d3e86bd-759f-4f1c-8c6a-8636b434e238
+
+	column Data
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 6b760dc9-7c15-42b4-a52f-765792054e17
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Tipo
+		dataType: string
+		lineageTag: 6191bfed-b132-47ab-bd63-8d41daa9ae41
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: a4dfba06-3fcd-4d1a-92a8-6e9f7ccf8eae
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Movimentação
+		dataType: double
+		lineageTag: a2dda666-b2a4-44f7-97ad-dd15a5520542
+		summarizeBy: sum
+		sourceColumn: Movimentação
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Saldo
+		dataType: double
+		lineageTag: 7843d29f-a421-4b56-bdbc-b842a6c04dfb
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Fluxo de Caixa-04cfc726-dc0e-4098-8d30-b8e8be60c21f' = m
+		mode: import
+		source =
+				let
+				    Origem = Excel.Workbook(File.Contents("C:\Users\karin\Dropbox\Fluxo de Caixa\Fluxo de Caixa no Excel.xlsx"), null, true),
+				    Tabela1_Table = Origem{[Item="Tabela1",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Tabela1_Table,{{"Data", type date}, {"Tipo", type text}, {"Categoria", type text}, {"Movimentação", type number}, {"Saldo", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Exception
+

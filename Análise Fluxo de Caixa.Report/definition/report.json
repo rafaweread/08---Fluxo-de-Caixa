@@ -1,0 +1,225 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "customTheme": {
+      "name": "TumbleRoadRedBlueTheme7265816614794562.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.26",
+        "report": "2.0.26",
+        "page": "1.3.26"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "TimeBrush1450434005853",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "icon.svg",
+          "path": "icon.svg",
+          "type": "CustomVisualIcon"
+        },
+        {
+          "name": "project.css",
+          "path": "project.css",
+          "type": "CustomVisualsCss"
+        },
+        {
+          "name": "project.js",
+          "path": "project.js",
+          "type": "CustomVisualJavascript"
+        }
+      ]
+    },
+    {
+      "name": "PBI_CV_73744D90_4DC9_4F18_8BA5_EE8FA5C98035",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "PBI_CV_73744D90_4DC9_4F18_8BA5_EE8FA5C98035.pbiviz.json",
+          "path": "PBI_CV_73744D90_4DC9_4F18_8BA5_EE8FA5C98035.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "WaffleChart1453776852267",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "WaffleChart1453776852267.pbiviz.json",
+          "path": "WaffleChart1453776852267.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "TornadoChart1452517688218",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "TornadoChart1452517688218.pbiviz.json",
+          "path": "TornadoChart1452517688218.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "PBI_CV_3C80B1F2_09AF_4123_8E99_C3CBC46B23E0",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "DualKpi.css",
+          "path": "DualKpi.css",
+          "type": "CustomVisualsCss"
+        },
+        {
+          "name": "DualKpi.js",
+          "path": "DualKpi.js",
+          "type": "CustomVisualJavascript"
+        },
+        {
+          "name": "icon.png",
+          "path": "icon.png",
+          "type": "CustomVisualIcon"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Capa_PC6988624241480336.svg",
+          "path": "Capa_PC6988624241480336.svg",
+          "type": "Image"
+        },
+        {
+          "name": "TumbleRoadRedBlueTheme7265816614794562.json",
+          "path": "TumbleRoadRedBlueTheme7265816614794562.json",
+          "type": "Image"
+        },
+        {
+          "name": "Vis_oGeral_241269848746556226.svg",
+          "path": "Vis_oGeral_241269848746556226.svg",
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "name": "enlightenSlicerB18DC0CE4A1F4BA79CE49FBE40F3965F",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "enlightenSlicerB18DC0CE4A1F4BA79CE49FBE40F3965F.pbiviz.json",
+          "path": "enlightenSlicerB18DC0CE4A1F4BA79CE49FBE40F3965F.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "PBI_CV_7B952816_A48F_49B4_9E13_15E3BB2C0337",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "PBI_CV_7B952816_A48F_49B4_9E13_15E3BB2C0337.pbiviz.json",
+          "path": "PBI_CV_7B952816_A48F_49B4_9E13_15E3BB2C0337.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "StreamGraph1446659696222",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "StreamGraph1446659696222.pbiviz.json",
+          "path": "StreamGraph1446659696222.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "Timeline1447991079100",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "Timeline1447991079100.pbiviz.json",
+          "path": "Timeline1447991079100.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "SmartFilterBySQLBI1458262140625",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "SmartFilterBySQLBI1458262140625.pbiviz.json",
+          "path": "SmartFilterBySQLBI1458262140625.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "CalendarVisualA45056645E4E428B9D26EF971839A6B2",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "CalendarVisualA45056645E4E428B9D26EF971839A6B2.pbiviz.json",
+          "path": "CalendarVisualA45056645E4E428B9D26EF971839A6B2.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "AsterPlot1443303142064",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "AsterPlot1443303142064.pbiviz.json",
+          "path": "AsterPlot1443303142064.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61.pbiviz.json",
+          "path": "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useEnhancedTooltips": false
+  }
+}

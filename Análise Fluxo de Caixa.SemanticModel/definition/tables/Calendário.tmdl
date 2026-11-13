@@ -1,0 +1,99 @@
+table Calendário
+	lineageTag: 0580df27-5c58-41df-a7e0-31a0966b353e
+
+	column Data
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 6e17c673-61ac-4360-ba43-884742dd683f
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variação
+			isDefault
+			relationship: 389e5250-ab1f-4ac1-a5f0-23172501f5e0
+			defaultHierarchy: LocalDateTable_a9a5781c-9776-46bd-b85e-da8b20fffaeb.'Hierarquia de Datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Ano
+		dataType: double
+		formatString: 0
+		lineageTag: ce477fb1-8bde-4a0d-a200-e63a53fa086d
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Mês
+		dataType: double
+		lineageTag: 090ebcf2-7930-4832-adcd-4151a0419a92
+		summarizeBy: sum
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ano Mês Class'
+		dataType: int64
+		formatString: 0
+		lineageTag: 97b66f90-c0e0-4060-8ed4-49d386830c40
+		summarizeBy: sum
+		sourceColumn: Ano Mês Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome do Mês'
+		dataType: string
+		lineageTag: 6faaf76f-d366-4ef5-bae2-fa1b801aadcc
+		summarizeBy: none
+		sourceColumn: Nome do Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês Abrev'
+		dataType: string
+		lineageTag: 1a2c9b54-77b4-4d32-9e6c-9cb53c574967
+		summarizeBy: none
+		sourceColumn: Mês Abrev
+		sortByColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mês e Ano'
+		dataType: string
+		lineageTag: bafd895f-81c5-473f-bbb2-1ef076a63fab
+		summarizeBy: none
+		sourceColumn: Mês e Ano
+		sortByColumn: 'Ano Mês Class'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendário-70f47c6d-d5dc-433c-a9f5-8affc12ba611 = m
+		mode: import
+		source =
+				let
+				    Origem = #date(2014,1,1),
+				    Personalizado1 = List.Dates(Origem, Number.From(DateTime.LocalNow())-Number.From(Origem), #duration(1,0,0,0)),
+				    #"Convertido em Tabela" = Table.FromList(Personalizado1, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Colunas com Nome Mudado" = Table.RenameColumns(#"Convertido em Tabela",{{"Column1", "Data"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas com Nome Mudado",{{"Data", type date}}),
+				    #"Ano Inserido" = Table.AddColumn(#"Tipo Alterado", "Ano", each Date.Year([Data]), type number),
+				    #"Mês Inserido" = Table.AddColumn(#"Ano Inserido", "Mês", each Date.Month([Data]), type number),
+				    #"Personalizado Adicionado" = Table.AddColumn(#"Mês Inserido", "Ano Mês Class", each [Ano]*100+[Mês]),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalizado Adicionado",{{"Ano Mês Class", Int64.Type}}),
+				    #"Nome do Mês Inserido" = Table.AddColumn(#"Tipo Alterado1", "Nome do Mês", each Date.MonthName([Data]), type text),
+				    #"Personalizado Adicionado1" = Table.AddColumn(#"Nome do Mês Inserido", "Mês Abrev", each Date.ToText([Data],"MMM")),
+				    #"Coluna Intercalada Inserida" = Table.AddColumn(#"Personalizado Adicionado1", "Intercalado", each Text.Combine({[Mês Abrev], "-", Text.From([Ano], "pt-BR")}), type text),
+				    #"Colunas com Nome Mudado1" = Table.RenameColumns(#"Coluna Intercalada Inserida",{{"Intercalado", "Mês e Ano"}})
+				in
+				    #"Colunas com Nome Mudado1"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,29 @@
+{
+  "version": "0.5.7",
+  "author": {
+    "name": "Microsoft",
+    "email": "pbicvsupport@microsoft.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/AsterPlot1443303142064.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "AsterPlot1443303142064",
+    "name": "AsterPlot",
+    "displayName": "Aster Plot",
+    "version": "0.5.7",
+    "description": "An Aster plot is a twist on a standard donut chart, using a second value to drive sweep angle.",
+    "supportUrl": "http://community.powerbi.com",
+    "gitHubUrl": "https://github.com/Microsoft/PowerBI-visuals-asterplot",
+    "visualClassName": "AsterPlot"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

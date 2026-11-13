@@ -1,0 +1,61 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 162,
+            "y": 295.5
+          },
+          "nodeIndex": "Fluxo de Caixa",
+          "nodeLineageTag": "f738205b-6777-4e5a-af36-b01509fa8dfb",
+          "size": {
+            "height": 285.2,
+            "width": 254
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 627.9038105676658,
+            "y": 28.5
+          },
+          "nodeIndex": "Calendário",
+          "nodeLineageTag": "0580df27-5c58-41df-a7e0-31a0966b353e",
+          "size": {
+            "height": 257.6,
+            "width": 254
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 902.9038105676658,
+            "y": 27.600000000000023
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "2257f729-01e6-4df6-9651-0eac3a7ea064",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

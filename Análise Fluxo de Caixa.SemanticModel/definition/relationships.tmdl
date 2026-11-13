@@ -1,0 +1,9 @@
+relationship 389e5250-ab1f-4ac1-a5f0-23172501f5e0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendário.Data
+	toColumn: LocalDateTable_a9a5781c-9776-46bd-b85e-da8b20fffaeb.Date
+
+relationship ff78f021-9431-424a-8b3d-def7eeed3bc6
+	fromColumn: 'Fluxo de Caixa'.Data
+	toColumn: Calendário.Data
+
