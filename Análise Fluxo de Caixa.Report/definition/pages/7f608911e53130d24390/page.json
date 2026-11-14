@@ -33,7 +33,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'VisãoGeral_2.svg'"
+                    "Value": "'Visão Geral.svg'"
                   }
                 }
               },
@@ -42,7 +42,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Vis_oGeral_241269848746556226.svg"
+                    "ItemName": "Vis_o_Geral43561594732642517.svg"
                   }
                 }
               },

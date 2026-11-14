@@ -26,6 +26,7 @@
                 }
               },
               "queryRef": "Fluxo de Caixa.Categoria",
+              "nativeQueryRef": "Categoria",
               "active": true
             }
           ]
@@ -43,7 +44,8 @@
                   "Property": "Soma Despesas"
                 }
               },
-              "queryRef": "Fluxo de Caixa.Soma Despesas"
+              "queryRef": "Fluxo de Caixa.Soma Despesas",
+              "nativeQueryRef": "Soma Despesas"
             }
           ]
         }
@@ -94,7 +96,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "9D"
                 }
               }
             },
@@ -113,7 +115,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                  "Value": "'''Segoe UI Light'', wf_segoe-ui_light, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -140,10 +142,10 @@
       "valueAxis": [
         {
           "properties": {
-            "start": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "false"
                 }
               }
             },
@@ -155,14 +157,7 @@
                       "Entity": "_Medidas"
                     }
                   },
-                  "Property": "Eixo Y dinamico"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+                  "Property": "EixoYdinamicoDespesas"
                 }
               }
             }

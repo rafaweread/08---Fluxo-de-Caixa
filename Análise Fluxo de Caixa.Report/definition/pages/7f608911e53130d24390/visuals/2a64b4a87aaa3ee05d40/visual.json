@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "2a64b4a87aaa3ee05d40",
   "position": {
-    "x": 833.63636363636351,
-    "y": 136.36363636363635,
+    "x": 833.511811023622,
+    "y": 136.06299212598427,
     "z": 6000,
-    "height": 239.09090909090907,
-    "width": 392.72727272727269
+    "height": 239.8740157480315,
+    "width": 420.28346456692913
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -37,7 +37,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fluxo de Caixa"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Cálculo Saldo"
@@ -70,7 +70,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "'10'"
+                  "Value": "9D"
                 }
               }
             },
@@ -85,6 +85,13 @@
               "expr": {
                 "Literal": {
                   "Value": "1D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
                 }
               }
             }

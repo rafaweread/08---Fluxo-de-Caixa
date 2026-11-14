@@ -1,6 +1,8 @@
+/// Tabela dimensão de calendário contínua para filtros temporais, agregações cronológicas e cálculos de Time Intelligence.
 table Calendário
 	lineageTag: 0580df27-5c58-41df-a7e0-31a0966b353e
 
+	/// Data diária única contínua. Chave de relacionamento primária com as datas das tabelas fato.
 	column Data
 		dataType: dateTime
 		formatString: dd/mm/yyyy
@@ -19,6 +21,7 @@ table Calendário
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
+	/// Ano calendário da data em formato numérico de 4 dígitos (ex.: 2024).
 	column Ano
 		dataType: double
 		formatString: 0
@@ -30,6 +33,7 @@ table Calendário
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
+	/// Número do mês no ano (1 a 12), utilizado para ordenações cronológicas.
 	column Mês
 		dataType: double
 		lineageTag: 090ebcf2-7930-4832-adcd-4151a0419a92
@@ -40,6 +44,7 @@ table Calendário
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Código numérico no formato AAAAMM (ex.: 202401) para ordenação cronológica precisa do Mês e Ano.
 	column 'Ano Mês Class'
 		dataType: int64
 		formatString: 0
@@ -49,6 +54,7 @@ table Calendário
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Nome completo do mês por extenso (ex.: Janeiro, Fevereiro).
 	column 'Nome do Mês'
 		dataType: string
 		lineageTag: 6faaf76f-d366-4ef5-bae2-fa1b801aadcc
@@ -57,6 +63,7 @@ table Calendário
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Nome abreviado do mês (ex.: Jan, Fev), configurado para ordenação pelo número do mês.
 	column 'Mês Abrev'
 		dataType: string
 		lineageTag: 1a2c9b54-77b4-4d32-9e6c-9cb53c574967
@@ -66,6 +73,7 @@ table Calendário
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Texto representativo do período mensal no formato 'Mês-Ano' (ex.: Jan-2024), ordenado pela coluna 'Ano Mês Class'.
 	column 'Mês e Ano'
 		dataType: string
 		lineageTag: bafd895f-81c5-473f-bbb2-1ef076a63fab

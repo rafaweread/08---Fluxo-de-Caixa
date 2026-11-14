@@ -3,9 +3,9 @@
   "name": "17e83b5a232a801a5655",
   "position": {
     "x": 97.595907928388755,
-    "y": 406.95652173913049,
+    "y": 394.06649616368287,
     "z": 7000,
-    "height": 244.91048593350385,
+    "height": 257.80051150895144,
     "width": 1156.4194373401535
   },
   "visual": {
@@ -98,7 +98,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "9D"
                 }
               }
             },
@@ -108,11 +108,37 @@
                   "Value": "'Above'"
                 }
               }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Light'', wf_segoe-ui_light, helvetica, arial, sans-serif'"
+                }
+              }
             }
           }
         }
       ],
       "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fluxo de Caixa.Soma Despesas"
+          }
+        },
         {
           "properties": {
             "fill": {
@@ -128,7 +154,7 @@
             }
           },
           "selector": {
-            "metadata": "Fluxo de Caixa.Soma Despesas"
+            "metadata": "Fluxo de Caixa.Soma Entradas"
           }
         }
       ],

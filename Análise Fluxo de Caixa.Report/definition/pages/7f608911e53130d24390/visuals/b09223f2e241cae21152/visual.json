@@ -6,7 +6,7 @@
     "y": 310.28132992327369,
     "z": 2000,
     "height": 65.370843989769824,
-    "width": 188.74680306905373
+    "width": 189.6675191815857
   },
   "visual": {
     "visualType": "card",
@@ -19,13 +19,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fluxo de Caixa"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Cálculo Saldo"
                 }
               },
-              "queryRef": "Fluxo de Caixa.Cálculo Saldo"
+              "queryRef": "Fluxo de Caixa.Cálculo Saldo",
+              "nativeQueryRef": "Cálculo Saldo"
             }
           ]
         }
@@ -83,9 +84,13 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "CorFonte"
                     }
                   }
                 }

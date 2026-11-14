@@ -1,6 +1,8 @@
+/// Tabela dedicada exclusivamente para centralização e organização de todas as medidas DAX e regras de negócio do modelo.
 table _Medidas
 	lineageTag: 2257f729-01e6-4df6-9651-0eac3a7ea064
 
+	/// Calcula uma folga de 30% sobre o valor máximo entre receitas e despesas por mês/ano, padronizando dinamicamente a escala do eixo Y em gráficos.
 	measure 'Eixo Y dinamico' = ```
 			
 			VAR vTabela = 
@@ -24,38 +26,127 @@ table _Medidas
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Calcula o valor total acumulado de despesas e saídas financeiras no período selecionado.
 	measure 'Soma Despesas' =
 			
 			COALESCE(
 			    CALCULATE(
 			        SUM('Fluxo de Caixa'[Movimentação]),
-			        FILTER('Fluxo de Caixa',
-			        'Fluxo de Caixa'[Tipo]="Saída")
+			        FILTER(
+			            'Fluxo de Caixa',
+			            'Fluxo de Caixa'[Tipo]="Saída"
+			        )
 			    ),0
 			)
-		formatString: #,0.0
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
 		lineageTag: d56262dc-cbd7-4638-a72a-ef32c083d677
 
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	/// Calcula o valor total acumulado de receitas e entradas financeiras no período selecionado.
 	measure 'Soma Entradas' =
 			
 			COALESCE(
 			    CALCULATE(
 			        SUM('Fluxo de Caixa'[Movimentação]),
-			        FILTER('Fluxo de Caixa',
-			        'Fluxo de Caixa'[Tipo]="Entrada")
+			        FILTER(
+			            'Fluxo de Caixa',
+			            'Fluxo de Caixa'[Tipo]="Entrada"
+			        )
 			    ),0
 			)
-		formatString: #,0.0
+		formatString: "R$"\ #,0.0;-"R$"\ #,0.0;"R$"\ #,0.0
 		lineageTag: 56de86d7-acd8-4a2f-be1b-003b23d18705
 
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	/// Retorna o código hexadecimal da cor (#16B25C verde para positivo e #B2182B vermelho para negativo) para formatação condicional de saldo.
 	measure CorFonte =
 			
 			SWITCH(
 			    TRUE(),
-			    [Cálculo Saldo]	> 0, "Green",
-			    [Cálculo Saldo] < 0, "Red"
+			    [Cálculo Saldo]	> 0, "#16B25C",
+			    [Cálculo Saldo] < 0, "#B2182B"
 			)
 		lineageTag: b2c39ce0-b8bc-4014-a292-3c93c944bad4
+
+	/// Calcula o total de receitas e entradas financeiras no mesmo período do ano anterior (Same Period Last Year).
+	measure EntradasAnoAnterior =
+			
+			CALCULATE(
+			    [Soma Entradas],
+			    SAMEPERIODLASTYEAR('Calendário'[Data])
+			)
+		lineageTag: 48ba7bac-371e-4506-93a1-b12f12d2ab25
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Conta a quantidade total de lançamentos de entrada financeira realizados no período.
+	measure QtdeEntradas = ```
+			
+			    CALCULATE(
+			        COUNTROWS('Fluxo de Caixa'),
+			        FILTER(
+			            'Fluxo de Caixa',
+			            'Fluxo de Caixa'[Tipo]="Entrada"
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: 2d6309d3-4dad-4fb4-b582-c7a8804f0a28
+
+	/// Conta a quantidade total de lançamentos de saída/despesa realizados no período.
+	measure QtdeDespesas = ```
+			
+			    CALCULATE(
+			        COUNTROWS('Fluxo de Caixa'),
+			        FILTER(
+			            'Fluxo de Caixa',
+			            'Fluxo de Caixa'[Tipo]="Saída"
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: cacb6da0-41a2-4f9d-8e97-719b8118e558
+
+	/// Calcula uma folga de 30% sobre a maior despesa entre as categorias selecionadas, ajustando dinamicamente o topo do eixo Y em gráficos de despesas.
+	measure EixoYdinamicoDespesas = ```
+			
+			VAR vTabela = 
+			    ALLSELECTED('Fluxo de Caixa'[Categoria])
+			
+			VAR vValor_maximo_despesas = 
+			    MAXX(vTabela, [Soma Despesas])
+			
+			VAR vDeslocamento = 1.3
+			
+			RETURN
+			    vValor_maximo_despesas * vDeslocamento
+			```
+		lineageTag: ad4205d2-ca5f-44f1-9a03-6774c26d5a1a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Calcula o total de despesas e saídas financeiras no mesmo período do ano anterior (Same Period Last Year).
+	measure DespesasAnoAnterior =
+			
+			CALCULATE(
+			    [Soma Despesas],
+			    SAMEPERIODLASTYEAR('Calendário'[Data])
+			)
+		lineageTag: d599260c-28c2-46c6-a68d-5f7f72c9ef67
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Calcula o resultado líquido do caixa no período (Total de Entradas menos Total de Despesas).
+	measure 'Cálculo Saldo' =
+			
+			COALESCE(
+			    [Soma Entradas]-[Soma Despesas],
+			    0
+			)
+		formatString: #,0.0
+		lineageTag: 0d3e86bd-759f-4f1c-8c6a-8636b434e238
 
 	partition _Medidas = m
 		mode: import
